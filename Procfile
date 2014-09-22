@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath="$PWD/my_project" wsgi:application
