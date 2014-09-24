@@ -48,3 +48,7 @@ Run the Development server
     workon env
     python manage.py runserver 0.0.0.0:8000
 
+
+Presentation URL:
+-----------------
+http://shar.es/1aYleO
