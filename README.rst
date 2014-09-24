@@ -1,50 +1,50 @@
-My Project Name
+Django Vagrant Base Project
 ==============================
 
-This is a Django Project
+This is a Django Project integrated with Vagrant to run a development instance using PostgreSQL and python-virtualenv.
 
 
-LICENSE: BSD
+Requirements:
+-------------
+Install Vagrant:
+https://www.vagrantup.com/downloads.html
+
+Install Virtualbox
+https://www.virtualbox.org/wiki/Downloads
+
+Install GIT:
+http://git-scm.com/downloads
 
 
-Getting up and running
-----------------------
 
-The steps below will get you up and running with a local development environment. We assume you have the following installed:
-
-* pip
-* virtualenv
-* PostgreSQL
-
-First make sure to create and activate a virtualenv_, then open a terminal at the project root and install the requirements for local development::
-
-    $ pip install -r requirements/local.txt
-
-.. _virtualenv: http://docs.python-guide.org/en/latest/dev/virtualenvs/
-
-You can now run the usual Django ``runserver`` command (replace ``yourapp`` with the name of the directory containing the Django project)::
-
-    $ python my_app/manage.py runserver
+Getting up and running with Vagrant
+-----------------------------------
+Open a console a go to you project directory:
 
 
-**Live reloading and Sass CSS compilation**
+.. sourcecode:: bash
 
-If you'd like to take advantage of live reloading and Sass / Compass CSS compilation you can do so with the included Grunt task.
+    vagrant up
 
-Make sure that nodejs_ is installed. Then in the project root run::
 
-    $ npm install grunt
 
-.. _nodejs: http://nodejs.org/download/
+It will install everything you need and will have installed:
 
-Now you just need::
+* Python
+* Python virtualenv
+* Django
+* Django libraries required for project
+* PostgreSQL 9.3
+* Will create a virtualenv called env
+* It will create the initial database.
 
-    $ grunt serve
 
-The base app will now run as it would with the usual ``manage.py runserver`` but with live reloading and Sass compilation enabled.
+Run the Development server
+-----------------------------------------
 
-To get live reloading to work you'll probably need to install an `appropriate browser extension`_
+.. sourcecode:: bash
 
-.. _appropriate browser extension: http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-
+    cd /vagrant/my_project/
+    workon env
+    python manage.py runserver 0.0.0.0:8000
 
-It's time to write the code!!!
