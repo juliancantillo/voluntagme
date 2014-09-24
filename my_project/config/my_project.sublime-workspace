@@ -192,20 +192,55 @@
 	"buffers":
 	[
 		{
-			"file": "common.py",
+			"contents": "#!/usr/bin/env bash\n\n#Install packages\n\n#Install MySQL\n# sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'\n# sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'\n# sudo apt-get -y install mysql-client mysql-server\n\n#Create the DB\n# echo \"create database seoq\" | mysql -uroot -proot\n# mysql -uroot -proot seoq < djangowp.sql\n\n\necho \"Configure Postgres DATABASE\"\nsudo -u postgres psql postgres -U postgres -c \"CREATE ROLE db_user WITH LOGIN ENCRYPTED PASSWORD 'password' CREATEDB CREATEROLE REPLICATION SUPERUSER\"\nsudo -u postgres psql postgres -U postgres -c \"CREATE DATABASE my_db\"\nsudo -u postgres psql my_db -U postgres -c \"CREATE EXTENSION postgis\"\nsudo -u postgres psql my_db -U postgres -c \"CREATE EXTENSION postgis_topology\"\nsudo -u postgres psql postgres -U postgres -c \"GRANT ALL PRIVILEGES ON DATABASE my_db TO db_user\"\n\n\necho \"Configure Virtualenv\"\n#Create and activate the virtualenv\ncd /home/vagrant/\nmkdir .virtualenvs\ncd .virtualenvs\nvirtualenv env\nsource env/bin/activate\n\n#Install the python requirements (inside the virtualenv)\ncd /vagrant/\necho \"Installing requirments for python\"\npip install -r requirements/local.txt\n\nchown vagrant.vagrant /home/vagrant/.virtualenvs\n\ncd my_project\n#Initialize the DB from the Django project models\npython manage.py migrate\n\n\n#Install nvm, npm, and the 'front' app requirements via bower\n# curl https://raw.githubusercontent.com/creationix/nvm/v0.11.1/install.sh | bash\n# source ~/.profile\n# nvm install v0.10.29\n# cd /vagrant/seoq/front/\n# #sudo npm install\n# sudo npm install -g bower\n# bower install -n\n\n\n# #Activate environments by default\n# echo 'source ~/env/bin/activate' >> ~/.bashrc\n# echo 'source ~/.profile' >> ~/.bashrc\n# echo 'nvm use 0.10' >> ~/.bashrc\n\n\n#Useful commands:\n# python manage.py runserver 0.0.0.0:8000\n# python manage.py changepassword admin\n",
+			"file": "/Users/andresgonzalez/projects/my_project/provision.sh",
+			"file_size": 1938,
+			"file_write_time": 130560393740000000,
 			"settings":
 			{
-				"buffer_size": 8963,
+				"buffer_size": 1901,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "local.py",
+			"settings":
+			{
+				"buffer_size": 1072,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/andresgonzalez/projects/my_project/Vagrantfile",
+			"settings":
+			{
+				"buffer_size": 1514,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "CREATE ROLE db_user WITH LOGIN ENCRYPTED PASSWORD 'password' CREATEDB CREATEROLE REPLICATION SUPERUSER;\nCREATE DATABASE my_db WITH OWNER db_user;\nGRANT ALL PRIVILEGES ON DATABASE my_db TO db_user;\n",
+			"file": "/Users/andresgonzalez/projects/my_project/psql.sql",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 197,
+				"line_ending": "Unix",
+				"name": "CREATE ROLE db_user WITH LOGIN ENCRYPTED PASSWORD"
 			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 87.0,
 		"selected_items":
 		[
+			[
+				"ruby",
+				"Set Syntax: Ruby"
+			],
 			[
 				"res",
 				"Set Syntax: reStructuredText Improved"
@@ -277,11 +312,21 @@
 	"expanded_folders":
 	[
 		"/Users/andresgonzalez/projects/my_project",
-		"/Users/andresgonzalez/projects/my_project/my_project",
 		"/Users/andresgonzalez/projects/my_project/my_project/config"
 	],
 	"file_history":
 	[
+		"/Users/andresgonzalez/Documents/vagrant/Vagrantfile",
+		"/Users/andresgonzalez/projects/my_project/my_project/config/common.py",
+		"/Users/andresgonzalez/projects/my_project/my_project/config/local.py",
+		"/Users/andresgonzalez/projects/my_project/README.rst",
+		"/Users/andresgonzalez/projects/my_project/Vagrantfile",
+		"/Users/andresgonzalez/projects/my_project/provision.sh",
+		"/Users/andresgonzalez/Documents/vagrant/provisioning.sh",
+		"/Users/andresgonzalez/projects/my_project/Procfile",
+		"/Users/andresgonzalez/projects/my_project/my_project/templates/account/password_reset.html",
+		"/Users/andresgonzalez/projects/my_project/.editorconfig",
+		"/Users/andresgonzalez/projects/my_project/requirements/local.txt",
 		"/Users/andresgonzalez/projects/res/res/templates/base.html",
 		"/Users/andresgonzalez/projects/res/res/templates/home.html",
 		"/Users/andresgonzalez/projects/res/requirements/local.txt",
@@ -398,18 +443,7 @@
 		"/Applications/Sublime Text.app/Contents/MacOS/changelog.txt",
 		"/Users/andresgonzalez/projects/bizpulse/apps/project_management/__init__.py",
 		"/Users/andresgonzalez/projects/bizpulse/apps/project_management/admin.py",
-		"/Users/andresgonzalez/projects/bizpulse/apps/api/views/projects_views.py",
-		"/Users/andresgonzalez/projects/bizpulse/static/js/scripts/invoices_form.js",
-		"/Users/andresgonzalez/projects/bizpulse/static/vendor/tablesorter/docs/example-option-sort-order.html",
-		"/Users/andresgonzalez/projects/bizpulse/supervisord.conf",
-		"/Users/andresgonzalez/projects/bizpulse/templates/_introjs.html",
-		"/Users/andresgonzalez/projects/bizpulse/apps/accounts/forms.py",
-		"/Users/andresgonzalez/projects/bizpulse/static/jquery-ui-multiselect-widget/tests/unit/qunit.css",
-		"/Users/andresgonzalez/projects/bizpulse/apps/services/models.py",
-		"/private/var/folders/jq/7bh5mv491hd9dd643h3zfdv00000gn/T/180fc8b7-063f-41bc-a232-91f306509e65/home/mygigline/production/mg/urls.py",
-		"/Users/andresgonzalez/projects/bizpulse/apps/dashboard/views/expenses.py",
-		"/Users/andresgonzalez/projects/bizpulse/apps/project_management/migrations/0002_auto__add_field_budgettype_service_type__add_field_company_service_typ.py",
-		"/Users/andresgonzalez/projects/bizpulse/utils/basecamp.py"
+		"/Users/andresgonzalez/projects/bizpulse/apps/api/views/projects_views.py"
 	],
 	"find":
 	{
@@ -443,6 +477,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"provi",
+			"setup",
 			"users",
 			"<db name>\n",
 			"include",
@@ -568,9 +604,7 @@
 			"<tr",
 			"<form",
 			"{%",
-			"{{",
-			"console.log",
-			"initial"
+			"{{"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -591,24 +625,52 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "common.py",
+					"file": "/Users/andresgonzalez/projects/my_project/provision.sh",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8963,
+						"buffer_size": 1901,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								466,
-								466
+								909,
+								909
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 266.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "local.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1072,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								198,
+								198
 							]
 						],
 						"settings":
@@ -622,6 +684,65 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/andresgonzalez/projects/my_project/Vagrantfile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1514,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1208,
+								1208
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/andresgonzalez/projects/my_project/psql.sql",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 197,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								197,
+								197
+							]
+						],
+						"settings":
+						{
+							"auto_name": "CREATE ROLE db_user WITH LOGIN ENCRYPTED PASSWORD",
+							"syntax": "Packages/SQL/SQL.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -674,8 +795,20 @@
 		"selected_items":
 		[
 			[
-				"common",
-				"res/config/common.py"
+				"local",
+				"my_project/config/local.py"
+			],
+			[
+				"vagrant",
+				"Vagrantfile"
+			],
+			[
+				"provisi",
+				"provision.sh"
+			],
+			[
+				"provision",
+				"provision.sh"
 			],
 			[
 				"vagra",
@@ -686,12 +819,12 @@
 				"README.rst"
 			],
 			[
-				"base",
-				"requirements/base.txt"
+				"common",
+				"res/config/common.py"
 			],
 			[
-				"local",
-				"requirements/local.txt"
+				"base",
+				"requirements/base.txt"
 			],
 			[
 				"homemodel",
@@ -1172,18 +1305,6 @@
 			[
 				"style",
 				"seoq/api/static/css/styles.css"
-			],
-			[
-				"styles",
-				"seoq/api/assets/css/styles.css"
-			],
-			[
-				"custom.less",
-				"seoq/api/static/css/less/custom.less"
-			],
-			[
-				"members",
-				"seoq/api/templates/account/members.html"
 			]
 		],
 		"width": 0.0
@@ -1216,7 +1337,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 198.0,
+	"side_bar_width": 226.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -40,5 +40,14 @@ class Local(Common):
         'SHOW_TEMPLATE_CONTEXT': True,
     }
     # end django-debug-toolbar
-
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'NAME': 'my_db',
+            'USER': 'db_user',
+            'PASSWORD': 'password',
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+        }
+    }
     # Your local stuff: Below this line define 3rd party libary settings
