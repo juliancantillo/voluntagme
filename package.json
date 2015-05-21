@@ -1,17 +1,33 @@
 {
-  "name": "my_project",
+  "name": "voluntagme",
   "version": "0.1.0",
-  "dependencies": {},
+  "dependencies": {
+    "gulp-less": "^3.0.3"
+  },
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-bg-shell": "~2.3.1",
-    "connect-livereload": "~0.3.2",
-    "grunt-contrib-compass": "~0.7.0",
-    "time-grunt": "~0.2.7",
-    "load-grunt-tasks": "~0.2.1"
+    "gulp": "*",
+    "gulp-util": "*",
+    "del": "*",
+    "gulp-uglify": "*",
+    "gulp-if": "*",
+    "gulp-notify": "*",
+    "vinyl-buffer": "*",
+    "yargs": "*",
+    "gulp-sass": "*",
+    "gulp-postcss": "*",
+    "autoprefixer-core": "*",
+    "gulp-sourcemaps": "*",
+    "browser-sync": "*",
+    "watchify": "*",
+    "browserify": "*",
+    "vinyl-source-stream": "*",
+    "gulp-imagemin": "*",
+    "gulp-jshint": "*",
+    "jshint-stylish": "*",
+    "gulp-mocha": "*",
+    "node-sass": "*"
   },
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=0.10"
   }
 }
