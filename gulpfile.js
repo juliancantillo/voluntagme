@@ -166,7 +166,7 @@ var tasks = {
         .pipe(source('./voluntagme/static/js/build.js'))
         .pipe(gulpif(production, buffer()))
         .pipe(gulpif(production, uglify()))
-        .pipe(gulp.dest('./voluntagme/static/build/js/'));
+        .pipe(gulp.dest('./'));
     };
     bundler.on('update', rebundle);
     return rebundle();

@@ -1,0 +1,32 @@
+{% load i18n %}
+<div id="inSlider" class="carousel slide carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#inSlider" data-slide-to="0" class="active"></li>
+        <li data-target="#inSlider" data-slide-to="1" class=""></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        {% for slide in slides %}
+        <div class="item active">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>{{ slide.title|safe }}</h1>
+                    <p>{{ slide.description|safe }}</p>
+                    <p>
+                        <a class="btn btn-lg btn-primary" target="_blank" href="{{ slide.link }}" role="button">{{ slide.call_to_action }}</a>
+                    </p>
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back" style="background-image: url('{{ MEDIA_URL }}{{ slide.image }}')"></div>
+        </div>
+        {% endfor %}
+    </div>
+    <a class="left carousel-control" href="#inSlider" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">{% trans "Previous" %}</span>
+    </a>
+    <a class="right carousel-control" href="#inSlider" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">{% trans "Next" %}</span>
+    </a>
+</div>

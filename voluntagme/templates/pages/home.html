@@ -1,1 +1,68 @@
 {% extends "base.html" %}
+{% load i18n %}
+
+{% block navbar_class %}navbar-default-sticky{% endblock navbar_class %}
+
+{% block pagetop %}
+    {% if slides_list %}
+        {% include "common/home_carousel.html" with slides=slides_list %}
+    {% endif %}
+{% endblock pagetop %}
+
+{% block content %}
+    <section id="testimonials" class="navy-section testimonials">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center wow zoomIn">
+                    <i class="fa fa-bullhorn big-icon"></i>
+                    <h1>
+                        {% trans "Why you should be a volunteer" %}
+                    </h1>
+                    <div class="testimonials-text">
+                        <i>"{% trans "Being a volunteer gives you unique experiences from REAL world, enforce your professional skills and helps to enhance your self." %}"</i>
+                    </div>
+                    <small>
+                        <strong>12.02.2014 - Andy Smith</strong>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="navy-line"></div>
+                        <h1>{% trans "We are more than a market place" %}</h1>
+                        <p>{% trans "We want to accompany you not only on the volunteers campaign, but in the whole process of your activity." %}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-5 col-lg-offset-1 features-text">
+                        <h2>{% trans "Get Collaboration" %} </h2>
+                        <i class="fa fa-bar-chart big-icon pull-right"></i>
+                        <p>{% trans "Increase the amount of volunteers backing up your foundation or non-profit organization." %}</p>
+                    </div>
+                    <div class="col-lg-5 features-text">
+                        <h2>{% trans "Enhance your communication" %} </h2>
+                        <i class="fa fa-bolt big-icon pull-right"></i>
+                        <p>{% trans "Keep track of your people, your organization will know what to do, what time, always." %}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-5 col-lg-offset-1 features-text">
+                        <h2>{% trans "Your local causes on the world sight" %} </h2>
+                        <i class="fa fa-clock-o big-icon pull-right"></i>
+                        <p>{% trans "You can get help from anywhere in the globe, just by creating your campaign in our platform." %}</p>
+                    </div>
+                    <div class="col-lg-5 features-text">
+                        <h2>{% trans "Take advantage of social media" %} </h2>
+                        <i class="fa fa-users big-icon pull-right"></i>
+                        <p>{% trans "Your causes can be listed on several social networks just with one click, engage new collaborators and created new volunteers networks." %}</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+{% endblock content %}

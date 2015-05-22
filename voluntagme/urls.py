@@ -6,13 +6,15 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
+from slides import views
+
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$',  # noqa
-        TemplateView.as_view(template_name='pages/home.html'),
+        views.IndexView.as_view(),
         name="home"),
     url(r'^about/$',
         TemplateView.as_view(template_name='pages/about.html'),
