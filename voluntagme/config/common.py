@@ -104,13 +104,20 @@ class Common(Configuration):
     # END FIXTURE CONFIGURATION
 
     # EMAIL CONFIGURATION
-    EMAIL_BACKEND = values.Value('django.core.mail.backends.smtp.EmailBackend')
+    ###########Email####################
+    SERVER_EMAIL = 'juliancantillo@inmovis.com'
+    DEFAULT_FROM_EMAIL = 'Voluntag.me <support@voluntag.me>'
+    MANDRILL_API_KEY = "7z-yJFB9hEU5TR3cv8qQ6Q"
+    EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
+    ACCOUNT_ACTIVATION_DAYS = 7
+
+    # EMAIL_BACKEND = values.Value('django.core.mail.backends.smtp.EmailBackend')
     # END EMAIL CONFIGURATION
 
     # MANAGER CONFIGURATION
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
     ADMINS = (
-        ('Andres Gonzalez', 'support@inqbation.com'),
+        ('Julian Cantillo', 'support@voluntag.me'),
     )
 
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers

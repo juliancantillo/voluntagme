@@ -32,3 +32,5 @@ node_modules/
 .sass-cache
 
 .vagrant
+*.sublime-project
+*.sublime-workspace

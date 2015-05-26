@@ -2,7 +2,8 @@
 
 global.jQuery = require('../vendor/jquery/dist/jquery');
 var $ = global.jQuery;
-var bootstrap = require('../vendor/bootstrap/dist/js/bootstrap');
+var bootstrap = require('../vendor/bootstrap/dist/js/npm');
+var bootstrap = require('./lib/cbpAnimatedHeader');
 
 $(document).ready(function () {
 
@@ -10,7 +11,9 @@ $(document).ready(function () {
     $('body').scrollspy({
         target: '.navbar-fixed-top',
         offset: 80
-    })
+    });
+
+    $('#inSlider').carousel();
 
     // Page scrolling feature
     $('a.page-scroll').bind('click', function(event) {
