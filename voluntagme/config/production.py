@@ -120,3 +120,13 @@ class Production(Common):
     # END CACHING
 
     # Your production stuff: Below this line define 3rd party libary settings
+        DATABASES = {
+        'default': {
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'NAME': 'django',
+            'USER': 'django',
+            'PASSWORD': 'WLjjIe2HkY',
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+        }
+    }
