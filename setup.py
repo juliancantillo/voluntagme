@@ -14,17 +14,17 @@ import my_project
 version = my_project.__version__
 
 setup(
-    name='My Project Name',
+    name='Volunga.me',
     version=version,
     author='',
-    author_email='support@inqbation.com',
+    author_email='support@voluntag.me',
     packages=[
-        'my_project',
+        'voluntagme',
     ],
     include_package_data=True,
     install_requires=[
         'Django>=1.6.5',
     ],
     zip_safe=False,
-    scripts=['my_project/manage.py'],
+    scripts=['voluntagme/manage.py'],
 )

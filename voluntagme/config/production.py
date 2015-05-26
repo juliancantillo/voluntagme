@@ -51,6 +51,7 @@ class Production(Common):
     # SITE CONFIGURATION
     # Hosts/domain names that are valid for this site
     # See https://docs.djangoproject.com/en/1.6/ref/settings/#allowed-hosts
+    DEBUG = False
     ALLOWED_HOSTS = ["*"]
     # END SITE CONFIGURATION
 
@@ -58,9 +59,9 @@ class Production(Common):
 
     # STORAGE CONFIGURATION
     # See: http://django-storages.readthedocs.org/en/latest/index.html
-    INSTALLED_APPS += (
-        'storages',
-    )
+    # INSTALLED_APPS += (
+    #     'storages',
+    # )
 
     # # See: http://django-storages.readthedocs.org/en/latest/backends/amazon-S3.html#settings
     # STATICFILES_STORAGE = DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
