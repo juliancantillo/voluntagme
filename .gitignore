@@ -31,6 +31,6 @@ node_modules/
 # Campass
 .sass-cache
 
-.vagrant
+.vagrant/
 *.sublime-project
 *.sublime-workspace
