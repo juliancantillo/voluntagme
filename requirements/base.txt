@@ -34,3 +34,6 @@ django-avatar==2.0
 
 
 # Your custom requirements go here
+
+#Email
+djrill==1.3.0
