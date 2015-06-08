@@ -2,6 +2,7 @@ from django.utils.translation import ugettext_lazy as _, string_concat
 from django.utils import translation
 
 CHOICES_CAUSE_CATEGORY = (
+    ('', _('My cause is realted to'),),
     ('health', _('Health'),),
     ('emergencies', _('Emergencies'),),
     ('education', _('Education'),),

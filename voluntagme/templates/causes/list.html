@@ -1,0 +1,28 @@
+{% extends "causes/base_causes.html" %}
+{% load i18n %}
+{% load staticfiles %}
+{% load humanize %}
+{% load bootstrap3 %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="text-center">
+      <h2>Volunteer fast and easy.</h2>
+      <form action="{% url 'causes:discover' %}" method="post" class="form-create-cause row">
+        <div class="col-sm-5">
+          {% bootstrap_field form.category layout='inline' size='lg' %}
+        </div>
+        <div class="col-sm-5">
+          {% bootstrap_field form.title layout='inline' size='lg' %}
+        </div>
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-lg btn-primary">Get help now</button>
+        </div>
+        {% csrf_token %}
+      </form>
+    </div>
+</div>
+{% endblock content %}

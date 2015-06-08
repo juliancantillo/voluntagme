@@ -35,7 +35,7 @@
           <ul class="nav navbar-nav navbar-right">
             {% block navbar_items %}
             <li><a class="page-scroll" href="#popular">{% trans "Popular" %}</a></li>
-            <li><a href="#discover">{% trans "Discover" %}</a></li>
+            <li><a href="{% url 'causes:discover' %}">{% trans "Discover" %}</a></li>
             <li><a class="page-scroll" href="#testimonials">{% trans "Why be a volunteer?" %}</a></li>
             <li><a class="page-scroll" href="#contact">{% trans "Contact" %}</a></li>
             {% endblock navbar_items %}

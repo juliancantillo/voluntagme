@@ -4,7 +4,10 @@ from django.utils.text import slugify
 from django.template.defaultfilters import slugify
 from django.core.validators import MinValueValidator
 
+from django.conf import settings
 from django.utils import translation
+from django.utils.encoding import python_2_unicode_compatible
+from django.utils.translation import ugettext_lazy as _
 
 from core.models import TimeStampedModel
 from core import constants
@@ -28,23 +31,34 @@ class Cause(TimeStampedModel):
         verbose_name=_('Category')
     )
 
-    land = models.PositiveIntegerField(
-        default=0, blank=False, verbose_name=_('Volunteers goal'),
+    volunteers_goal = models.PositiveIntegerField(
+        default=0, blank=False, verbose_name=_('Volunteers Goal'),
+        validators=[MinValueValidator(0)]
+    )
+
+    volunteers_qty = models.PositiveIntegerField(
+        default=0, blank=False, verbose_name=_('Volunteers Quantity'),
         validators=[MinValueValidator(0)]
     )
 
     image = models.ImageField(
         max_length=1000, blank=True,
-        default='default/casa-renta-venta-propiedades-cali.jpg'
+        default='default/voluntagme-volunteer-causes-need-your-help.jpg'
     )
 
     visits = models.PositiveIntegerField(default=0, verbose_name=_('Visits'))
+
+    class Meta:
+        verbose_name = _('Cause')
+        verbose_name_plural = _('Causes')
 
     def __str__(self):
         category = self.category
         title = self.title
         return u' - '.join([category, title])
 
-    class Meta:
-        verbose_name = _('Cause')
-        verbose_name_plural = _('Causes')
+    def save(self, *args, **kwargs):
+        title = self.title
+        self.slug = slugify(title)
+
+        super(Cause, self).save(*args, **kwargs)
