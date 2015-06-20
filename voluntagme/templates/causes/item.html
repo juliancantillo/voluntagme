@@ -1,0 +1,20 @@
+{% load i18n %}
+{% load thumbnail %}
+
+<div class="col-sm-4">
+    <figure class="voluntag-popular-box">
+        {% thumbnail cause.image "x183" as im %}  
+        <img class="img-responsive" src="{{im.url}}" alt="">
+        {% endthumbnail %}
+        <figcaption class="popular-caption">
+            <h3>{{ cause.title }}</h3>
+            <p>{{ cause.description }}</p>
+        </figcaption>
+    </figure>
+    <div class="voluntag-bottom-box row">
+        <div class="col-sm-12 voluntag-location"><i class="fa fa-map-marker"></i><small> Cali</small></div>
+        <div class="col-sm-12"><progressbar class="small-progress-bar" value="{{ cause.volunteers_qty }}" max="{{ cause.volunteers_goal }}"></progressbar></div>
+        <p><strong>{{ cause.volunteers_qty }}</strong> / {{ cause.volunteers_goal }} {% trans "Volunteers helping" %} <span class="pull-right">{{ cause.created_at }}</span></p>
+        <p><a class="btn btn-primary btn-sm" href="{% url 'causes:detail_cause' cause.category cause.slug %}" role="button">{% trans "Help now!" %}</a></p>
+    </div>      
+</div>

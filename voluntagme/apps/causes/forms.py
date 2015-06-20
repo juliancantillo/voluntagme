@@ -8,9 +8,8 @@ from django.utils.translation import ugettext_lazy as _
 
 logger = logging.getLogger(__name__)
 
-
-from django import forms
 from core import constants
+from .models import Cause
 
 class CauseCreateForm(forms.Form):
     title = forms.CharField(max_length=250,
@@ -38,7 +37,21 @@ class CauseCreateForm(forms.Form):
 
         else:
             instance = self.instance
+            instance.title = title
+            instance.category = category
             
             instance.save()
 
         return instance
+
+class CauseUpdateForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(CauseUpdateForm, self).__init__(*args, **kwargs)
+
+    class Meta:
+        model = Cause
+        fields = (
+            'volunteers_goal','description',
+            'category','image','title'
+        )
+    

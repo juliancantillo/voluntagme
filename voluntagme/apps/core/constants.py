@@ -15,3 +15,18 @@ CHOICES_CAUSE_CATEGORY = (
     ('sports', _('Sports'),),
     ('others', _('Others'),),
 )
+
+MENU_CAUSE_CATEGORY = (
+    ('all', _('All categories'),),
+    ('health', _('Health'),),
+    ('emergencies', _('Emergencies'),),
+    ('education', _('Education'),),
+    ('rescue', _('Rescue'),),
+    ('community', _('Community'),),
+    ('homeless-and-housing', _('Homeless & Housing'),),
+    ('animals', _('Animals'),),
+    ('crisis-support', _('Crisis support'),),
+    ('environtment', _('Environtment'),),
+    ('sports', _('Sports'),),
+    ('others', _('Others'),),
+)

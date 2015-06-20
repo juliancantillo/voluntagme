@@ -17,6 +17,7 @@ django-model-utils==2.2
 
 # images
 Pillow==2.5.3
+sorl-thumbnail==12.2
 
 # For user registration, either via email or social
 # Well-built with regular release cycles!
@@ -31,7 +32,6 @@ django-autoslug==1.7.2
 
 # Useful things
 django-avatar==2.0
-
 
 # Your custom requirements go here
 django-bootstrap3==5.4.0

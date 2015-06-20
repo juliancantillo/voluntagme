@@ -15,11 +15,12 @@ class CausesAdmin(admin.ModelAdmin):
                 'volunteers_goal',
                 'volunteers_qty',
                 'image',
+                'description',
             )]
         })
     ]
     prepopulated_fields = {"slug": ("title",)}
-    list_display = ['title','description']
-    search_fields = ['title','category']
+    list_display = ['title','slug','volunteers_qty', 'volunteers_goal']
+    search_fields = ['title','slug','category']
 
 admin.site.register(Cause, CausesAdmin)

@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.template.defaultfilters import slugify
 from django.core.validators import MinValueValidator
+from django.core.urlresolvers import reverse
 
 from django.conf import settings
 from django.utils import translation
@@ -42,7 +43,7 @@ class Cause(TimeStampedModel):
     )
 
     image = models.ImageField(
-        max_length=1000, blank=True,
+        max_length=1000, blank=True,upload_to='causes',
         default='default/voluntagme-volunteer-causes-need-your-help.jpg'
     )
 
@@ -62,3 +63,11 @@ class Cause(TimeStampedModel):
         self.slug = slugify(title)
 
         super(Cause, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        kwargs = {
+            'slug': self.slug,
+            'category': self.category,
+        }
+
+        return reverse('causes:detail_cause', kwargs=kwargs)

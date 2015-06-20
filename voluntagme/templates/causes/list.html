@@ -19,10 +19,31 @@
           {% bootstrap_field form.title layout='inline' size='lg' %}
         </div>
         <div class="col-sm-2">
-          <button type="submit" class="btn btn-lg btn-primary">Get help now</button>
+          <button type="submit" class="btn btn-lg btn-primary">{% trans "Get help now!" %}</button>
         </div>
         {% csrf_token %}
       </form>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="list-group">
+          {% for slug, category in categories %}
+            <a href="{% url 'causes:category_list' category=slug %}" class="list-group-item">{{ category }}</a>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <div class="row">
+        {% for cause in object_list %}
+          {% include "causes/item.html" with cause=cause %}
+        {% empty %}
+          <div class="alert alert-info">
+            <strong>{% trans "Opps!" %}</strong> 
+            {% trans "Well, we don't have any cause yet, but you can create one above!" %}
+          </div>
+        {% endfor %}
+        </div>
+      </div>
     </div>
 </div>
 {% endblock content %}

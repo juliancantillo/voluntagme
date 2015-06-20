@@ -43,7 +43,7 @@ class Local(Common):
     DATABASES = {
         'default': {
             'ENGINE': 'django.contrib.gis.db.backends.postgis',
-            'NAME': 'my_db',
+            'NAME': 'voluntagme',
             'USER': 'db_user',
             'PASSWORD': 'password',
             'HOST': '127.0.0.1',

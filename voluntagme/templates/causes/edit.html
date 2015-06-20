@@ -1,0 +1,37 @@
+{% extends "causes/base_causes.html" %}
+{% load i18n %}
+{% load staticfiles %}
+{% load humanize %}
+{% load bootstrap3 %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="text-center">
+      <h2>{% trans "Share more details of your cause" %}  </h2>
+      <form action="{% url 'causes:post_cause_step2' object.slug %}" method="post" class="form-create-cause row">
+        <div class="col-sm-12">
+          {% bootstrap_field form.volunteers_goal layout='inline' size='lg' %}
+        </div>
+        <div class="col-sm-12">
+          {% bootstrap_field form.description layout='inline' size='lg' %}
+        </div>
+        <div class="col-sm-12">
+          {% bootstrap_field form.category layout='inline' size='lg' %}
+        </div>
+        <div class="col-sm-12">
+          {% bootstrap_field form.image layout='inline' size='lg' %}
+        </div>
+        <div class="col-sm-12">
+          {% bootstrap_field form.title layout='inline' size='lg' %}
+        </div>
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-lg btn-primary">Get help now</button>
+        </div>
+        {% csrf_token %}
+      </form>
+    </div>
+</div>
+{% endblock content %}

@@ -50,6 +50,7 @@ class Common(Configuration):
         'allauth.socialaccount',  # registration
         # 'djangular',
         'bootstrap3',
+        'sorl.thumbnail',
     )
 
     # Apps specific for this project go here.
